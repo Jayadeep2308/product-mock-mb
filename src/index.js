@@ -2,6 +2,7 @@ const mb = require('mountebank');
 const settings = require('./settings');
 const healthCheckService = require('./health-check-service');
 const productMockService = require('./product-mock-service');
+const productPriceMockService = require('./product-price-mock-service')
 
 const mbServerInstance = mb.create({
     port: settings.port,
@@ -14,4 +15,5 @@ const mbServerInstance = mb.create({
 mbServerInstance.then(function () {
     healthCheckService.injectMock();
     productMockService.injectMock();
+    productPriceMockService.injectMock();
 });
