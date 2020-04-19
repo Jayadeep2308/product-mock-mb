@@ -1,0 +1,19 @@
+{
+  "name": "product-mock",
+  "version": "1.0.0",
+  "description": "Mock product details service using monteblank",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jayadeep2308/product-mock-mb.git"
+  },
+  "author": "Jayadeep Yarlagadda",
+  "license": "ISC",
+  "dependencies": {
+    "mountebank": "^2.2.0",
+    "node-fetch": "^2.6.0"
+  }
+}
