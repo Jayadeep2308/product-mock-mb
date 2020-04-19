@@ -7,7 +7,7 @@ function injectMock() {
             predicates: [{
                 and: [
                     { equals: { method: "GET" } },
-                    { startsWith: { "path": "/customers/" } }
+                    { contains: { "path": "/product/" } }
                 ]
             }],
             responses: [
@@ -17,20 +17,21 @@ function injectMock() {
                         headers: {
                             "Content-Type": "application/json"
                         },
-                        body: '{ "firstName": "${row}[first_name]", "lastName": "${row}[last_name]", "email": "${row}[email]" }'
+                        body: '{ "productId": "${row}[product_id]", "name": "${row}[product_name]", "description": "${row}[product_description]","fullImage": "${row}[image_path]","price": "${row}[product_price]" }'
                     },
                     _behaviors: {
                         lookup: [
                             {
                                 "key": {
                                   "from": "path",
-                                  "using": { "method": "regex", "selector": "/customers/(.*)$" },
+                                  "using": { "method": "regex", "selector": "/product/(.*)$" },
                                   "index": 1
                                 },
                                 "fromDataSource": {
                                   "csv": {
-                                    "path": "test-data/customer.csv",
-                                    "keyColumn": "id"
+                                    "delimiter" :",",
+                                    "path": "product-data/products.csv",
+                                    "keyColumn": "product_id"
                                   }
                                 },
                                 "into": "${row}"
